@@ -21,11 +21,8 @@ module Crotest
     @@results_list.push result
   end
 
-  def self.final_report
-    # TODO: calculate elapsed time
-    puts "\n Finished in TIME \n"
-
-    puts @@counters.map{|k,v| "#{v} #{k}"}.join(", ")
+  def self.print_report
+    puts "\n", @@counters.map{|k,v| "#{v} #{k}"}.join(", ")
 
     @@results_list.each &.present
   end
@@ -36,10 +33,9 @@ module Crotest
 end
 
 at_exit do
-  Crotest.final_report
+  Crotest.print_report
   exit 1 unless Crotest.succeeded?
 end
-
 
 include Crotest::DSL
 include Crotest::Assertions

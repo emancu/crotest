@@ -1,5 +1,5 @@
 module Crotest::Assertions
-  # Assert that value is not nil or false.
+  # Assert that expression is not nil or false.
   macro assert(expression, msg = nil, file = __FILE__, line = __LINE__)
     %evaluation = {{ expression }}
 
@@ -9,27 +9,36 @@ module Crotest::Assertions
       raise Crotest::AssertionFailed.new(%msg, {{file}}, {{line}})
     end
 
-    print "."
-    Crotest.increment(:assertions)
+    success
   end
 
+  # Assert that expression is falsey
   macro deny(expression, msg = nil, file = __FILE__, line = __LINE__)
-    assert !expression, msg, file, line
+    assert !{{expression}}, {{msg}}, {{file}}, {{line}}
   end
 
   # Assert that actual and expected values are equal.
-  def assert_equal(expected, actual)
-    assert(actual == expected, "#{actual.inspect} != #{expected.inspect}")
+  macro assert_equal(expected, actual, msg = nil, file = __FILE__, line = __LINE__)
+    assert({{actual}} == {{expected}}, "#{{{actual}}.inspect} != #{{{expected}}.inspect}")
   end
 
   # Assert that the block raises an expected exception.
-  macro assert_raise(expected = Exception)
+  macro assert_raise(expected = Exception, msg = nil, file = __FILE__, line = __LINE__)
     begin
-      yield
-    rescue exception : {{expected}}
-
+      {{yield}}
+    rescue %exception : {{expected}}
+      success
+    rescue %exception
+      %result = %exception.is_a?({{expected}})
+      assert(%result, "got #{%result.inspect} instead", {{file}}, {{line}})
     else
-      # assert(exception.kind_of?(expected), "got #{exception.inspect} instead")
+      %msg = {{msg}} || "Expected #{{{expected}}.class.name} to be raised"
+      raise Crotest::AssertionFailed.new(%msg, {{file}}, {{line}})
     end
+  end
+
+  private def success
+    Crotest.increment(:assertions)
+    print "."
   end
 end

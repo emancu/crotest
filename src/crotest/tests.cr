@@ -28,7 +28,6 @@ module Crotest
     private def print_backtrace(ex : Exception)
       print "\n\t#{ex} (#{ex.class})\n\t"
       print ex.backtrace.join("\n\t")
-
       puts "\n"
     end
   end
