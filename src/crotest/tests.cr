@@ -49,7 +49,6 @@ module Crotest
       print_header "Failed"
       print_backtrace ex
     end
-
   end
 
   class ErroredTest < Test

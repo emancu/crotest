@@ -3,11 +3,11 @@ require "./crotest/*"
 module Crotest
   @@counters : Hash(Symbol, Int32)
   @@counters = {
-    passed: 0,
+    passed:     0,
     assertions: 0,
-    failures: 0,
-    errors: 0,
-    pending: 0
+    failures:   0,
+    errors:     0,
+    pending:    0,
   }
 
   def self.increment(key : Symbol)
@@ -22,7 +22,8 @@ module Crotest
   end
 
   def self.print_report
-    puts "\n", @@counters.map{|k,v| "#{v} #{k}"}.join(", ")
+    counters_str = @@counters.map { |k, v| "#{v} #{k}" }
+    puts "\n", counters_str.join(", ")
 
     @@results_list.each &.present
   end
