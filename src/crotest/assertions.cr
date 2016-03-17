@@ -1,7 +1,7 @@
 module Crotest::Assertions
   # Assert that expression is not nil or false.
   macro assert(expression, msg = nil, file = __FILE__, line = __LINE__)
-    %evaluation = {{ expression }}
+    %evaluation = {{expression}}
 
     unless %evaluation
       %msg = {{msg}} || "Failed assertion"
@@ -20,7 +20,7 @@ module Crotest::Assertions
   # Assert that actual and expected values are equal.
   macro assert_equal(expected, actual, msg = nil, file = __FILE__, line = __LINE__)
     %msg = {{msg}} || "#{ ({{expected}}).inspect } != #{ ({{actual}}).inspect }"
-    assert({{expected}} == {{actual}}, %msg)
+    assert({{expected}} == {{actual}}, %msg, {{file}}, {{line}})
   end
 
   # Assert that the block raises an expected exception.
