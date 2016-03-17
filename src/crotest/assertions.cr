@@ -19,7 +19,8 @@ module Crotest::Assertions
 
   # Assert that actual and expected values are equal.
   macro assert_equal(expected, actual, msg = nil, file = __FILE__, line = __LINE__)
-    assert({{actual}} == {{expected}}, "#{{{actual}}.inspect} != #{{{expected}}.inspect}")
+    %msg = {{msg}} || "#{ ({{expected}}).inspect } != #{ ({{actual}}).inspect }"
+    assert({{expected}} == {{actual}}, %msg)
   end
 
   # Assert that the block raises an expected exception.
