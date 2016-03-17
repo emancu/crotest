@@ -1,4 +1,5 @@
 # crotest
+[![Build Status](https://travis-ci.org/emancu/crotest.svg?branch=master)](https://travis-ci.org/emancu/crotest)
 
 A tiny and simple test framework for crystal
 
