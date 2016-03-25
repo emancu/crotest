@@ -10,11 +10,11 @@ module Crotest
     end
 
     def description(ex : Nil)
-      raise "subclass responsability"
+      raise "subclass responsibility"
     end
 
     def description(ex : Exception)
-      raise "subclass responsability"
+      raise "subclass responsibility"
     end
 
     def increment_counter
