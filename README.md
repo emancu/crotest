@@ -60,7 +60,7 @@ Run your tests with `crystal spec`.
 
 ### Custom assertions
 
-Extend the asssertions used by `Crotest` is really easy.
+Extend the assertions used by `Crotest` is really easy.
 You need to open the module `Crotest::Assertions` and add your assertions like the example below:
 
 
