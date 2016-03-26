@@ -1,7 +1,8 @@
 require "./crotest/*"
 
 module Crotest
-  @@counters : Hash(Symbol, Int32)
+  @@results_list = [] of Test
+  @@contexts = [] of (-> Void)
   @@counters = {
     passed:     0,
     assertions: 0,
@@ -13,9 +14,6 @@ module Crotest
   def self.increment(key : Symbol)
     @@counters[key] += 1
   end
-
-  @@results_list : Array(Test)
-  @@results_list = [] of Test
 
   def self.report(result : Test)
     @@results_list.push result
@@ -35,6 +33,7 @@ end
 
 at_exit do
   Crotest.print_report
+
   exit 1 unless Crotest.succeeded?
 end
 
