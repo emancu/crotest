@@ -79,6 +79,35 @@ it "supports my custom assertion" do
 end
 ```
 
+### Before/After blocks
+
+If you need to run code _before_ or _after_ each test, declare each block like in the example below.
+Remember to define `before/after` blocks before the corresponding `it` blocks.
+Given this is not dynamically evaluated, we must define at the beginning of the file or `describe` block.
+
+```crystal
+before do
+  # First block to be executed
+end
+
+after do
+  # Fifth and last block to be executed
+end
+
+describe "a nested context" do
+  before do
+    # Second block to be executed
+  end
+
+  after do
+    # Fourth block to be executed
+  end
+
+  it "executes the before blocks and" do
+    # Third block to be executed
+  end
+end
+```
 
 ## Contributing
 
