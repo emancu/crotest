@@ -28,14 +28,14 @@ module Crotest::DSL
 
     begin
       {{ yield }}
-    rescue exception : Crotest::AssertionFailed
-      result = Crotest::FailedTest.new {{name}}, {{file}}, {{line}}, exception
-    rescue exception : Exception
-      result = Crotest::ErroredTest.new {{name}}, {{file}}, {{line}}, exception
+    rescue %exception : Crotest::AssertionFailed
+      %result = Crotest::FailedTest.new {{name}}, {{file}}, {{line}}, %exception
+    rescue %exception : Exception
+      %result = Crotest::ErroredTest.new {{name}}, {{file}}, {{line}}, %exception
     ensure
-      result ||= Crotest::PassedTest.new {{name}}, {{file}}, {{line}}
+      %result ||= Crotest::PassedTest.new {{name}}, {{file}}, {{line}}
 
-      Crotest.report result
+      Crotest.report %result
     end
 
     Crotest::ContextPlan.teardown
