@@ -13,6 +13,7 @@ module Crotest
 
   def self.increment(key : Symbol)
     @@counters[key] += 1
+    print '.'
   end
 
   def self.report(result : Test)
