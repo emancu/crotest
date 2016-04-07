@@ -9,7 +9,7 @@ module Crotest::Assertions
       raise Crotest::AssertionFailed.new(%msg, {{file}}, {{line}})
     end
 
-    success
+    Crotest.increment(:assertions)
   end
 
   # Assert that expression is falsey
@@ -32,7 +32,7 @@ module Crotest::Assertions
     begin
       {{yield}}
     rescue %exception : {{expected}}
-      success
+      Crotest.increment(:assertions)
     rescue %exception
       %result = %exception.is_a?({{expected}})
 
@@ -42,10 +42,5 @@ module Crotest::Assertions
 
       raise Crotest::AssertionFailed.new(%msg, {{file}}, {{line}})
     end
-  end
-
-  private def success
-    Crotest.increment(:assertions)
-    print "."
   end
 end
