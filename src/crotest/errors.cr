@@ -1,9 +1,9 @@
 module Crotest
   class AssertionFailed < Exception
-    getter file
-    getter line
+    getter file : String
+    getter line : Int32
 
-    def initialize(message, @file, @line)
+    def initialize(message , @file : String, @line : Int32)
       super(message)
     end
   end

@@ -1,6 +1,6 @@
 module Crotest
   abstract class Test
-    def initialize(@name, @file, @line, @exception = nil)
+    def initialize(@name : String, @file : String, @line : Int32, @exception : Exception? = nil)
       print @id
       increment_counter
     end

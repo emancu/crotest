@@ -1,9 +1,9 @@
 module Crotest
   struct Context
-    property id
-    property block
+    property id : String?
+    property block : Proc(Void)
 
-    def initialize(@id, @block)
+    def initialize(@id : String?, @block : Proc(Void))
     end
   end
 
