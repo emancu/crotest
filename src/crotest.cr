@@ -4,11 +4,11 @@ module Crotest
   @@results_list = [] of Test
   @@contexts = [] of (-> Void)
   @@counters = {
-    passed:     0,
-    assertions: 0,
-    failures:   0,
-    errors:     0,
-    pending:    0,
+    :passed     => 0,
+    :assertions => 0,
+    :failures   => 0,
+    :errors     => 0,
+    :pending    => 0,
   }
 
   def self.increment(key : Symbol)
