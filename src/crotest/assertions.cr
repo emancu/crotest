@@ -33,10 +33,12 @@ module Crotest::Assertions
       {{yield}}
     rescue %exception : {{expected}}
       Crotest.increment(:assertions)
+      %exception
     rescue %exception
       %result = %exception.is_a?({{expected}})
 
       assert(%result, "got #{%result.inspect} instead", {{file}}, {{line}})
+      %exception
     else
       %msg = {{msg}} || "Expected #{{{expected}}.class.name} to be raised"
 
