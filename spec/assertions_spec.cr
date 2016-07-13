@@ -57,6 +57,16 @@ describe "Assertions" do
       it "should fail if the code block raises an exception different than the one it was specified" do
         assert_raise(Crotest::AssertionFailed) { assert_raise(DummyException) { raise Exception.new } }
       end
+
+      it "returns the exception object" do
+        generic_error = assert_raise { raise DummyException.new("Boom!") }
+        assert_equal DummyException, generic_error.class
+        assert_equal "Boom!", generic_error.to_s
+
+        specific_error = assert_raise(DummyException) { raise DummyException.new("Boom!") }
+        assert_equal DummyException, specific_error.class
+        assert_equal "Boom!", specific_error.to_s
+      end
     end
   end
 end
