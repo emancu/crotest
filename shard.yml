@@ -4,4 +4,9 @@ version: 0.1.2
 authors:
   - Emiliano Mancuso <emiliano.mancuso@gmail.com>
 
+description: |
+  A tiny and simple test framework for Crystal with common assertions and no pollution into Object class.
+
+crystal: 0.25.0
+
 license: MIT
