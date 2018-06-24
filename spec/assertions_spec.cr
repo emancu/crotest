@@ -14,13 +14,13 @@ describe "Assertions" do
     end
   end
 
-  describe "deny" do
+  describe "reject" do
     it "succeeds if the value is false" do
-      deny false
+      reject false
     end
 
     it "raises if the assertion fails" do
-      assert_raise(Crotest::AssertionFailed) { deny true }
+      assert_raise(Crotest::AssertionFailed) { reject true }
     end
   end
 

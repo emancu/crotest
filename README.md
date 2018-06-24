@@ -19,7 +19,7 @@ describe "DSL" do
     it "has only a few assertions" do
       var = false
 
-      deny var
+      reject var
       assert_equal false, var
       assert_raise Exception do
         raise Exception.new("Boom!")
@@ -56,7 +56,7 @@ Run your tests with `crystal spec`.
 ### Assertions
 
 - `assert`
-- `deny`
+- `reject`
 - `assert_equal`
 - `assert_raise`
 

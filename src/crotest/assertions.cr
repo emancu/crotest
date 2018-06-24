@@ -13,7 +13,7 @@ module Crotest::Assertions
   end
 
   # Assert that expression is falsey
-  macro deny(expression, msg = nil, file = __FILE__, line = __LINE__)
+  macro reject(expression, msg = nil, file = __FILE__, line = __LINE__)
     assert !{{expression}}, {{msg}}, {{file}}, {{line}}
   end
 
