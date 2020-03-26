@@ -3,8 +3,6 @@
 
 A tiny and simple test framework for Crystal with common assertions and no pollution into `Object` class.
 
-> NOTE: This library was built during the Citrusybte's Investment Day program
-
 ## Example
 
 ```crystal
