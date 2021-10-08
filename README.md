@@ -1,5 +1,5 @@
 # crotest
-[![Build Status](https://travis-ci.org/emancu/crotest.svg?branch=master)](https://travis-ci.org/emancu/crotest)
+[![Build](https://github.com/emancu/crotest/actions/workflows/crystal.yml/badge.svg)](https://github.com/emancu/crotest/actions/workflows/crystal.yml)
 
 A tiny and simple test framework for Crystal with common assertions and no pollution into `Object` class.
 
