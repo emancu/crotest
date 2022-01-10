@@ -1,6 +1,6 @@
 name: crotest
 version: 1.0.3
-crystal: "0.25.0 - 1.0"
+crystal: ">= 0.25, < 2.0"
 
 authors:
   - Emiliano Mancuso <emiliano.mancuso@gmail.com>
